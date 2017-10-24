@@ -14,11 +14,15 @@ def execute():
     args = parser.parse_args()
     keyword = args.keyword
     trans_result = spider_youdao.translate(keyword)
-    cmd_print(trans_result, args.more)
+    cmd_print(keyword, trans_result, args.more)
 
 
-def cmd_print(trans_result, more=False):
+def cmd_print(keyword, trans_result, more=False):
     cprint('')
+    if trans_result == {}:
+        cprint(keyword, 'cyan', attrs=['bold'])
+        cprint('\nCome To Nothing.', 'magenta', attrs=['bold'])
+        return
     cprint('  ' + trans_result['keyword'], 'cyan', end='\t', attrs=['bold'])
     if(len(trans_result['phonetic_list']) <= 1):
         cprint(' '.join(trans_result['phonetic_list']), 'magenta', end='\n\n')
@@ -30,13 +34,13 @@ def cmd_print(trans_result, more=False):
     cprint('')
     num = 1
     for item in trans_result['phrase_list']:
-        cprint(str(num) + '. ',end='')
-        str_value=item[0].replace(trans_result['keyword'],'\1')
+        cprint(str(num) + '. ', end='')
+        str_value = item[0].replace(trans_result['keyword'], '\1')
         for word in str_value:
             if word == '\1':
-                cprint(trans_result['keyword'],'cyan',end='')
+                cprint(trans_result['keyword'], 'cyan', end='')
             else:
-                cprint(word,end='')
+                cprint(word, end='')
         cprint('\n  ' + item[1], 'blue')
         if num == 4:
             break
@@ -45,13 +49,13 @@ def cmd_print(trans_result, more=False):
         cprint('')
         num = 1
         for item in trans_result['bilingual_list']:
-            cprint(str(num) + '. ',end='')
-            str_value=item[0].replace(trans_result['keyword'],'\1')
+            cprint(str(num) + '. ', end='')
+            str_value = item[0].replace(trans_result['keyword'], '\1')
             for word in str_value:
                 if word == '\1':
-                    cprint(trans_result['keyword'],'cyan',end='')
+                    cprint(trans_result['keyword'], 'cyan', end='')
                 else:
-                    cprint(word,end='')
+                    cprint(word, end='')
             cprint('\n  ' + item[1], 'magenta')
             num += 1
 
