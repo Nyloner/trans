@@ -2,7 +2,7 @@
 
  A Simple Translation Tool In Your Command Line.
 
-![image]('./images/trans.png')
+![image](./images/trans.png)
 
 ### Installation
 ```
