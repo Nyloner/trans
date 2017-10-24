@@ -22,5 +22,9 @@ trans translate -m
 
 trans 翻译 -m
 ```
+Translate the sentences.
+```
+trans 'Just Do it'
+```
 
 
