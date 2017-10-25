@@ -8,11 +8,11 @@ from trans.spiders import spider_youdao
 def execute():
     parser = argparse.ArgumentParser(
         description='A simple tool for translation.')
-    parser.add_argument('keyword')
+    parser.add_argument('keywords',nargs='+')
     parser.add_argument('-m', '--more', action="store_true",
                         help='show more information.')
     args = parser.parse_args()
-    keyword = args.keyword
+    keyword = ' '.join(args.keywords)
     trans_result = spider_youdao.translate(keyword)
     cmd_print(keyword, trans_result, args.more)
 
