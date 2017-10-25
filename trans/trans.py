@@ -18,7 +18,7 @@ def execute():
                         help='use dict.youdao.com .')
     args = parser.parse_args()
     keyword = ' '.join(args.keywords)
-    if not args.iciba:
+    if args.youdao:
         trans_result = spider_youdao.translate(keyword)
     else:
         trans_result = spider_iciba.translate(keyword)
