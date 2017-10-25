@@ -9,7 +9,7 @@ setup(
    	description='A Simple Translation Tool In Your Command Line.',
    	license='BSD',
    	packages=find_packages(),
-   	install_requires=['requests', 'bs4', 'lxml'],
+   	install_requires=['requests', 'bs4', 'lxml','termcolor'],
    	entry_points={
             'console_scripts': [
                 'trans = trans.trans:execute'
