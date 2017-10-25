@@ -51,8 +51,9 @@ def crawl(keyword):
     for item in example_items:
         try:
             tags = item.find_all('p')
-            src_value = tags[0].get_text().replace('\r','').replace('\n','')
-            trans_value = tags[1].get_text().replace('\r','').replace('\n','')
+            src_value = tags[0].get_text().replace('\r', '').replace('\n', '')
+            trans_value = tags[1].get_text().replace(
+                '\r', '').replace('\n', '')
         except:
             continue
         bilingual_list.append([src_value, trans_value])
